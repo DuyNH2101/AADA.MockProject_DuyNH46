@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "550706089441",
+    "project_id": "mymockproject-f68d9",
+    "storage_bucket": "mymockproject-f68d9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550706089441:android:7ba93c93859827ba5a96a0",
+        "android_client_info": {
+          "package_name": "com.example.aadamockproject_duynh46"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7lPzIbkE2MWpGIYogWBIrHMAGNfLfcJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

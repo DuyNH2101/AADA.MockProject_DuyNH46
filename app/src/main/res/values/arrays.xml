@@ -1,0 +1,28 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="sort_by_entries">
+        <item>By None</item>
+        <item>By Release Date</item>
+        <item>By Rating</item>
+    </string-array>
+
+    <string-array name="sort_by_values">
+        <item>by_none</item>
+        <item>by_release_date</item>
+        <item>by_rating</item>
+    </string-array>
+    
+    <string-array name="load_movie_type_entries">
+        <item>Popular</item>
+        <item>Top Rated</item>
+        <item>Upcoming</item>
+        <item>Now Playing</item>
+    </string-array>
+
+    <string-array name="load_movie_type_values">
+        <item>popular</item>
+        <item>top_rated</item>
+        <item>upcoming</item>
+        <item>now_playing</item>
+    </string-array>
+</resources>

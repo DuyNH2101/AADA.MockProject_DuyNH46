@@ -1,17 +1,86 @@
 [versions]
 agp = "8.7.3"
+firebaseBom = "33.11.0"
+hiltAndroid = "2.44"
+hiltAndroidCompiler = "2.51.1"
+hiltAndroidVersion = "2.51.1"
+hiltLifecycleViewmodel = "1.0.0-alpha03"
+hiltWork = "1.2.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+converterGson = "2.5.0"
+picasso = "2.71828"
+retrofit = "2.9.0"
+preference = "1.2.1"
+navigationFragment = "2.8.9"
+navigationUi = "2.8.9"
+roomCompiler = "2.6.1"
+annotation = "1.8.0"
+rxandroid = "2.1.1"
+rxjava = "2.2.21"
+retrofit2Rxjava2Adapter = "1.0.0"
+pagingCommonAndroid = "3.3.6"
+pagingRxjava2 = "3.3.6"
+loggingInterceptor = "4.10.0"
+pagingRuntime = "3.3.6"
+firebaseDatabase = "21.0.0"
+lifecycleLivedataKtx = "2.8.7"
+lifecycleViewmodelKtx = "2.8.7"
+dagger = "2.52"
+daggerCompiler = "2.52"
+workRuntimeVersion = "2.9.0"
+
+
+
 
 [libraries]
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
+hilt-android-compiler-v2511 = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+hilt-android-v2511 = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" }
+hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltWork" }
+hilt-lifecycle-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }
+hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWork" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+paging-rxjava3 = { module = "androidx.paging:paging-rxjava3", version.ref = "pagingCommonAndroid" }
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+room-paging = { module = "androidx.room:room-paging", version.ref = "roomCompiler" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompiler" }
+annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+
+rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxandroid" }
+rxjava = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxjava" }
+retrofit2-rxjava2-adapter = { module = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter", version.ref = "retrofit2Rxjava2Adapter" }
+paging-common-android = { group = "androidx.paging", name = "paging-common-android", version.ref = "pagingCommonAndroid" }
+paging-rxjava2 = { group = "androidx.paging", name = "paging-rxjava2", version.ref = "pagingRxjava2" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
+paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagingRuntime" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
+work-runtime-v290 = { module = "androidx.work:work-runtime", version.ref = "workRuntimeVersion" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
