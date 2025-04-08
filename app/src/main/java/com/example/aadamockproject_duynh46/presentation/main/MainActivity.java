@@ -26,6 +26,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.aadamockproject_duynh46.R;
 
 import com.example.aadamockproject_duynh46.databinding.ActivityMainBinding;
+import com.example.aadamockproject_duynh46.domain.model.MovieModel;
 import com.example.aadamockproject_duynh46.framework.utils.ImageUtils;
 import com.example.aadamockproject_duynh46.presentation.about.AboutFragment;
 import com.example.aadamockproject_duynh46.presentation.favoritelist.FavoriteMovieListFragment;
@@ -75,13 +76,6 @@ public class MainActivity extends AppCompatActivity {
     private AboutFragment aboutFragment;
 
     private boolean isFiltering;
-
-    /*TODO: Complete Movie Detail
-    *       Firebase for profile
-    *       About Fragment
-    *       Reminder
-    *       Option menu for change load type
-    *       UI change */
 
 
     @Override
@@ -135,6 +129,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+        MovieModel movieFromNotification = getIntent().getParcelableExtra("MOVIE");
+        if(movieFromNotification != null){
+            movieDetailViewModel.getMutableLiveDataMovieDetail().setValue(movieFromNotification);
+        }
     }
 
     private void setupMovieDetailViewModelListener(){
