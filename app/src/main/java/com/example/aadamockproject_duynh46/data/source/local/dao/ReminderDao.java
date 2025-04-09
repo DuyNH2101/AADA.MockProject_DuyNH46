@@ -1,5 +1,6 @@
 package com.example.aadamockproject_duynh46.data.source.local.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -14,6 +15,9 @@ import java.util.List;
 public interface ReminderDao {
     @Query("SELECT * FROM reminders")
     List<ReminderEntity> getAllReminders();
+
+    @Query("SELECT * FROM reminders")
+    LiveData<List<ReminderEntity>> getAllRemindersLiveData();
     @Insert
     void insert (ReminderEntity reminderEntity);
 

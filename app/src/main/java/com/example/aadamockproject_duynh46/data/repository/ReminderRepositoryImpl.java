@@ -2,6 +2,8 @@ package com.example.aadamockproject_duynh46.data.repository;
 
 import static com.example.aadamockproject_duynh46.data.mapper.EntityMapper.toReminderEntity;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.aadamockproject_duynh46.data.source.entities.ReminderEntity;
 import com.example.aadamockproject_duynh46.data.source.local.MovieDatabase;
 import com.example.aadamockproject_duynh46.domain.model.ReminderModel;
@@ -12,7 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class ReminderRepositoryImpl implements ReminderRepository {
-    private MovieDatabase movieDatabase;
+    private final MovieDatabase movieDatabase;
 
     @Inject
     public ReminderRepositoryImpl(MovieDatabase movieDatabase){
@@ -22,6 +24,11 @@ public class ReminderRepositoryImpl implements ReminderRepository {
     @Override
     public List<ReminderEntity> getAllReminders(){
         return movieDatabase.reminderDao().getAllReminders();
+    }
+
+    @Override
+    public LiveData<List<ReminderEntity>> getAllRemindersLiveData() {
+        return movieDatabase.reminderDao().getAllRemindersLiveData();
     }
 
     @Override

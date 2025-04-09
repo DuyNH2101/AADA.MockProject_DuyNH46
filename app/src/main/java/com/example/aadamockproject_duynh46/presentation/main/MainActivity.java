@@ -158,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
 
-        reminderListViewModel.loadAllReminder();
 
         ReminderListInNavAdapter reminderListInNavAdapter = new ReminderListInNavAdapter();
         binding.reminderRecyclerViewNavView.setAdapter(reminderListInNavAdapter);
@@ -386,5 +385,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onNewIntent(@NonNull Intent intent) {
+        super.onNewIntent(intent);
+        MovieModel movieFromNotification = intent.getParcelableExtra("MOVIE");
+        if(movieFromNotification != null){
+            movieDetailViewModel.getMutableLiveDataMovieDetail().setValue(movieFromNotification);
+        }
     }
 }

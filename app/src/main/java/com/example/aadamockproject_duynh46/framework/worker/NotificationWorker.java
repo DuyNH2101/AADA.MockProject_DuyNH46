@@ -66,6 +66,16 @@ public class NotificationWorker extends Worker {
         ReminderEntity reminderEntity = repository.getReminderByMovieId(movieId);
         if (reminderEntity == null) return;
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+
+        if(reminderEntity.getTimeInMillis() - 10000 > calendar.getTimeInMillis()
+        || reminderEntity.getTimeInMillis() + 10000 < calendar.getTimeInMillis()){
+            return;
+        }
+
+
+
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra("MOVIE", new MovieModel(
                 reminderEntity.isAdult(),

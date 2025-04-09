@@ -87,18 +87,20 @@ public class MovieInformationFragment extends Fragment {
         detailViewModel.loadCastAndCrewList();
         detailViewModel.loadMovieReminder();
 
-        detailViewModel.getMutableLiveDataListCredits().observe(getViewLifecycleOwner(), peopleModelPagingData -> {
-            castAndCrewListAdapter = new CastAndCrewListAdapter();
+        if(!detailViewModel.getMutableLiveDataListCredits().hasObservers()){
+            detailViewModel.getMutableLiveDataListCredits().observe(getViewLifecycleOwner(), peopleModelPagingData -> {
+                castAndCrewListAdapter = new CastAndCrewListAdapter();
 
-            binding.castAndCrewRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-            binding.castAndCrewRecyclerView.setAdapter(castAndCrewListAdapter);
-            binding.loadCastAndCrewProgressbar.setVisibility(View.GONE);
+                binding.castAndCrewRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                binding.castAndCrewRecyclerView.setAdapter(castAndCrewListAdapter);
+                binding.loadCastAndCrewProgressbar.setVisibility(View.GONE);
 
-            if(peopleModelPagingData != null){
-                castAndCrewListAdapter.submitData(getLifecycle(), peopleModelPagingData);
-            }
+                if(peopleModelPagingData != null){
+                    castAndCrewListAdapter.submitData(getLifecycle(), peopleModelPagingData);
+                }
 
-        });
+            });
+        }
 
         favoriteMovieListViewModel.getMutableLiveDataChangedFavMovie().observe(getViewLifecycleOwner(), movieModel1 -> {
             if(movieModel.getId() == movieModel1.getId()){
@@ -120,6 +122,9 @@ public class MovieInformationFragment extends Fragment {
             if(reminderModel != null){
                 binding.movieInfoReminderTime.setText(reminderModel.getTimeInString());
                 binding.movieInfoReminderTime.setVisibility(View.VISIBLE);
+            } else {
+                binding.movieInfoReminderTime.setText("");
+                binding.movieInfoReminderTime.setVisibility(View.GONE);
             }
         });
 
@@ -129,12 +134,7 @@ public class MovieInformationFragment extends Fragment {
         });
 
         reminderListViewModel.getMutableLiveDataChangedReminder().observe(getViewLifecycleOwner(), reminderModel -> {
-            if(reminderModel == null){
-                return;
-            }
-            if(reminderModel.getMovie().getId() == detailViewModel.getMutableLiveDataMovieDetail().getValue().getId()){
-                detailViewModel.getMutableLiveDataReminder().setValue(reminderModel);
-            }
+            detailViewModel.loadMovieReminder();
         });
 
         return binding.getRoot();

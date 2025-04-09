@@ -13,12 +13,11 @@ import com.google.firebase.database.ValueEventListener;
 import javax.inject.Inject;
 
 public class FirebaseUserRepositoryImpl implements UserRepository {
-    private final FirebaseDatabase mFirebaseDatabase;
     private final DatabaseReference userRef;
 
     @Inject
     public FirebaseUserRepositoryImpl(){
-        mFirebaseDatabase = FirebaseDatabase
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase
                 .getInstance("https://mymockproject-f68d9-default-rtdb.asia-southeast1.firebasedatabase.app/");
         userRef = mFirebaseDatabase.getReference("user").child("current_user");
     }

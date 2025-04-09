@@ -53,8 +53,6 @@ public class ReminderListFragment extends Fragment {
 
         if(reminderListViewModel.getMutableLiveDataAllReminderList().getValue() != null){
             reminderListAdapter.submitList(reminderListViewModel.getMutableLiveDataAllReminderList().getValue());
-        } else {
-            reminderListViewModel.loadAllReminder();
         }
 
 
