@@ -382,17 +382,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ViewPagerStateAdapter(this, fragmentArrayList);
 
         binding.fragmentContainer.setAdapter(adapter);
-        ArrayList<String> titleArrayList = new ArrayList<>();
 
-        titleArrayList.add("Movie");
-        titleArrayList.add("Favorite");
-        titleArrayList.add("Upcoming");
-        titleArrayList.add("Tickets");
-        titleArrayList.add("Settings");
-        titleArrayList.add("About");
         new TabLayoutMediator(binding.tabLayout, binding.fragmentContainer,
                 (tab, position) -> {
-                    tab.setText(titleArrayList.get(position));
                     tab.setIcon(iconList.get(position));
                 })
                 .attach();
