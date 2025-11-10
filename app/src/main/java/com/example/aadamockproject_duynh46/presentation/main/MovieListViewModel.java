@@ -75,7 +75,6 @@ public class MovieListViewModel extends ViewModel {
                 },
                 t -> Log.d("ERROR", "Load remote list failed"),
                 () -> Log.d("Finished", "Load Remote Finished"));
-        Log.d("ViewModel", "Load started");
     }
 
     private boolean checkConditions(){

@@ -1,26 +1,82 @@
 {
   "project_info": {
-    "project_number": "550706089441",
-    "project_id": "mymockproject-f68d9",
-    "storage_bucket": "mymockproject-f68d9.firebasestorage.app"
+    "project_number": "548793035947",
+    "firebase_url": "https://booking-ticket-app-ca8f6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "booking-ticket-app-ca8f6",
+    "storage_bucket": "booking-ticket-app-ca8f6.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:550706089441:android:7ba93c93859827ba5a96a0",
+        "mobilesdk_app_id": "1:548793035947:android:7d55e6917dbf171e4e9bee",
         "android_client_info": {
           "package_name": "com.example.aadamockproject_duynh46"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "548793035947-pgv4odhldiiaj7jsrlq91dka3te19rcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyD7lPzIbkE2MWpGIYogWBIrHMAGNfLfcJM"
+          "current_key": "AIzaSyD_EkR02xZP_s9_mDUDUglcqNbHSD2PsUs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "548793035947-pgv4odhldiiaj7jsrlq91dka3te19rcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548793035947:android:302b1492b49030044e9bee",
+        "android_client_info": {
+          "package_name": "com.example.bookingticketapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "548793035947-atvqpe14ti77ihvt82m4dsecan84ktsl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookingticketapp",
+            "certificate_hash": "a31a3ebc276f5cfa0fbeb1ddc679b5e7612313b6"
+          }
+        },
+        {
+          "client_id": "548793035947-qhjr3q5dmlqpp8c944l88spi5lmes2n2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookingticketapp",
+            "certificate_hash": "52fca2247e790b02b0b3677522109f460d65ffb5"
+          }
+        },
+        {
+          "client_id": "548793035947-pgv4odhldiiaj7jsrlq91dka3te19rcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_EkR02xZP_s9_mDUDUglcqNbHSD2PsUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "548793035947-pgv4odhldiiaj7jsrlq91dka3te19rcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

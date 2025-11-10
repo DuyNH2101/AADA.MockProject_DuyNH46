@@ -1,9 +1,6 @@
 package com.example.aadamockproject_duynh46.presentation.setting;
 
-
-
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.EditTextPreference;

@@ -34,7 +34,12 @@ lifecycleViewmodelKtx = "2.8.7"
 dagger = "2.52"
 daggerCompiler = "2.52"
 workRuntimeVersion = "2.9.0"
-
+firebaseFirestore = "26.0.2"
+firebaseMessaging = "25.0.1"
+firebaseAuth = "24.0.1"
+glide = "4.16.0"
+playServicesAuth = "21.3.0"
+zxing = "3.5.3"
 
 
 
@@ -80,7 +85,13 @@ lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-view
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
 work-runtime-v290 = { module = "androidx.work:work-runtime", version.ref = "workRuntimeVersion" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

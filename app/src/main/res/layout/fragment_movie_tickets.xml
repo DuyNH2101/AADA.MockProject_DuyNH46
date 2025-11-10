@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_gradient"
+    android:padding="16dp">
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:text="🎟️ Danh sách vé đã đặt"
+        android:textColor="#2C3E50"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"
+        android:shadowColor="#20FFFFFF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- Danh sách vé -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTickets"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+
+    <!-- Tổng vé -->
+    <TextView
+        android:id="@+id/tvTotalTickets"
+        android:text="Tổng vé đã đặt:"
+        android:textColor="#37474F"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- Nút Thanh toán QR -->
+    <Button
+        android:id="@+id/btnGenerateQR"
+        android:text="💳 Thanh toán bằng QR"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn_primary"
+        android:elevation="3dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- QR Code hiển thị -->
+    <LinearLayout
+        android:id="@+id/qrContainer"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_qr"
+        android:padding="16dp"
+        android:layout_marginTop="12dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivQRCode"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:contentDescription="QR Code" />
+
+        <TextView
+            android:id="@+id/tvPaymentNote"
+            android:text="Quét mã bằng MoMo hoặc ứng dụng ngân hàng để thanh toán"
+            android:textColor="#263238"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

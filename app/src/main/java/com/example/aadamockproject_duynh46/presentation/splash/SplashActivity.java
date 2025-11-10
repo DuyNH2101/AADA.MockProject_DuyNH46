@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
 import com.example.aadamockproject_duynh46.R;
-import com.example.aadamockproject_duynh46.presentation.main.MainActivity;
+import com.example.aadamockproject_duynh46.presentation.login.LoginActivity;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -18,12 +18,9 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class SplashActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler(Looper.getMainLooper());
-    private final Runnable navigateToMain = new Runnable() {
-        @Override
-        public void run() {
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-            finish(); // Prevent going back to the splash screen
-        }
+    private final Runnable navigateToMain = () -> {
+        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        finish(); // Prevent going back to the splash screen
     };
 
     @Override
@@ -38,6 +35,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        handler.removeCallbacks(navigateToMain); // Prevent memory leaks
+        handler.removeCallbacks(navigateToMain);
     }
 }

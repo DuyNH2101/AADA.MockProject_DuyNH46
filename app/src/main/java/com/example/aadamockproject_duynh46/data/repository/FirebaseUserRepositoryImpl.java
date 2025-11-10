@@ -18,7 +18,7 @@ public class FirebaseUserRepositoryImpl implements UserRepository {
     @Inject
     public FirebaseUserRepositoryImpl(){
         FirebaseDatabase mFirebaseDatabase = FirebaseDatabase
-                .getInstance("https://mymockproject-f68d9-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                .getInstance("https://booking-ticket-app-ca8f6-default-rtdb.asia-southeast1.firebasedatabase.app/");
         userRef = mFirebaseDatabase.getReference("user").child("current_user");
     }
     @Override

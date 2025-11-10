@@ -39,6 +39,12 @@ import com.example.aadamockproject_duynh46.presentation.profile.UserInformationA
 import com.example.aadamockproject_duynh46.presentation.reminderlist.ReminderListFragment;
 import com.example.aadamockproject_duynh46.presentation.reminderlist.ReminderListViewModel;
 import com.example.aadamockproject_duynh46.presentation.setting.SettingsFragment;
+import com.example.aadamockproject_duynh46.presentation.ticket.MovieTicketsFragment;
+import com.example.aadamockproject_duynh46.presentation.ticket.TicketDetailsFragment;
+import com.example.aadamockproject_duynh46.presentation.ticket.TicketDetailsViewModel;
+import com.example.aadamockproject_duynh46.presentation.upcoming.UpcomingMovieDetailsFragment;
+import com.example.aadamockproject_duynh46.presentation.upcoming.UpcomingMovieDetailsViewModel;
+import com.example.aadamockproject_duynh46.presentation.upcoming.UpcomingMoviesFragment;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
@@ -50,7 +56,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
     private static final ArrayList<Integer> iconList = new ArrayList<>(
-            Arrays.asList(R.drawable.ic_home, R.drawable.ic_favorite, R.drawable.ic_setting, R.drawable.ic_about)
+            Arrays.asList(R.drawable.ic_home, R.drawable.ic_favorite,R.drawable.ic_upcoming, R.drawable.ic_ticket_svg, R.drawable.ic_setting, R.drawable.ic_about)
     );
     private ActivityMainBinding binding;
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -67,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
     private FavoriteMovieListViewModel favoriteMovieListViewModel;
 
+    private TicketDetailsViewModel ticketDetailsViewModel;
+    private UpcomingMovieDetailsViewModel upcomingMovieDetailsViewModel;
+
     private ArrayList<Fragment> fragmentArrayList;
     private MovieListFragment movieListFragment;
     private FavoriteMovieListFragment favoriteMovieListFragment;
@@ -75,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
     private AboutFragment aboutFragment;
 
+    private TicketDetailsFragment ticketDetailsFragment;
+    private MovieTicketsFragment movieTicketsFragment;
+
+    private UpcomingMovieDetailsFragment upcomingMovieDetailsFragment;
+    private UpcomingMoviesFragment upcomingMoviesFragment;
     private boolean isFiltering;
 
 
@@ -89,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         favoriteMovieListFragment = new FavoriteMovieListFragment();
         settingsFragment = new SettingsFragment();
         aboutFragment = new AboutFragment();
+        movieTicketsFragment = new MovieTicketsFragment();
+        upcomingMoviesFragment = new UpcomingMoviesFragment();
 
         setupViewPager2();
 
@@ -99,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
         movieListViewModel = new ViewModelProvider(this).get(MovieListViewModel.class);
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         favoriteMovieListViewModel = new ViewModelProvider(this).get(FavoriteMovieListViewModel.class);
+        ticketDetailsViewModel = new ViewModelProvider(this).get(TicketDetailsViewModel.class);
+        upcomingMovieDetailsViewModel = new ViewModelProvider(this).get(UpcomingMovieDetailsViewModel.class);
 
 
         toolbarChangeViewModel.updateCurrentFragment("movie_list");
@@ -133,6 +151,45 @@ public class MainActivity extends AppCompatActivity {
         if(movieFromNotification != null){
             movieDetailViewModel.getMutableLiveDataMovieDetail().setValue(movieFromNotification);
         }
+
+        ticketDetailsViewModel.getTicketDetailsMutableLiveData().observe(this, ticket -> {
+            if (ticket == null) {
+                ticketDetailsFragment = null;
+                fragmentArrayList.set(3, movieTicketsFragment);
+                adapter.notifyItemChanged(3);
+            } else {
+                String createdAtStr = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm")
+                        .format(ticket.getCreatedAt().toDate());
+                ticketDetailsFragment = TicketDetailsFragment.newInstance(
+                        ticket.getTicketId(),
+                        ticket.getName(),
+                        ticket.getEndTime(),
+                        createdAtStr,
+                        50000
+                );
+                fragmentArrayList.set(3, ticketDetailsFragment);
+                adapter.notifyItemChanged(3);
+            }
+        });
+
+        upcomingMovieDetailsViewModel.getUpcomingMovieDetailsMutableLiveData().observe(this, movie -> {
+            if (movie == null) {
+                upcomingMovieDetailsFragment = null;
+                fragmentArrayList.set(2, upcomingMoviesFragment);
+                adapter.notifyItemChanged(2);
+            } else {
+                upcomingMovieDetailsFragment = new UpcomingMovieDetailsFragment();
+
+                fragmentArrayList.set(2, upcomingMovieDetailsFragment);
+                adapter.notifyItemChanged(2);
+            }
+        });
+
+        upcomingMovieDetailsViewModel.getGoToTicketMutableLiveData().observe(this, str -> {
+            if (str != null) {
+                binding.fragmentContainer.setCurrentItem(3, true);
+            }
+        });
     }
 
     private void setupMovieDetailViewModelListener(){
@@ -179,14 +236,14 @@ public class MainActivity extends AppCompatActivity {
             movieDetailViewModel.getMutableLiveDataListCredits().setValue(null);
         });
         binding.reminderListBackBtn.setOnClickListener(v -> {
-            fragmentArrayList.set(2, settingsFragment);
-            adapter.notifyItemChanged(2);
+            fragmentArrayList.set(4, settingsFragment);
+            adapter.notifyItemChanged(4);
             binding.fragmentContainer.setCurrentItem(0, true);
         });
         binding.showAllReminderBtn.setOnClickListener(v -> {
-            fragmentArrayList.set(2, new ReminderListFragment());
-            adapter.notifyItemChanged(2);
-            binding.fragmentContainer.setCurrentItem(2, true);
+            fragmentArrayList.set(4, new ReminderListFragment());
+            adapter.notifyItemChanged(4);
+            binding.fragmentContainer.setCurrentItem(4, true);
         });
         setupToolbarChangeListener();
 
@@ -317,6 +374,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentArrayList = new ArrayList<>();
         fragmentArrayList.add(movieListFragment);
         fragmentArrayList.add(favoriteMovieListFragment);
+        fragmentArrayList.add(upcomingMoviesFragment);
+        fragmentArrayList.add(movieTicketsFragment);
         fragmentArrayList.add(settingsFragment);
         fragmentArrayList.add(aboutFragment);
 
@@ -327,6 +386,8 @@ public class MainActivity extends AppCompatActivity {
 
         titleArrayList.add("Movie");
         titleArrayList.add("Favorite");
+        titleArrayList.add("Upcoming");
+        titleArrayList.add("Tickets");
         titleArrayList.add("Settings");
         titleArrayList.add("About");
         new TabLayoutMediator(binding.tabLayout, binding.fragmentContainer,
@@ -348,8 +409,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else if (position == 1) {
                     toolbarChangeViewModel.updateCurrentFragment("favorite_list");
-                } else if (position == 2) {
-                    if(fragmentArrayList.get(2) instanceof ReminderListFragment){
+                } else if (position == 4) {
+                    if(fragmentArrayList.get(4) instanceof ReminderListFragment){
                         toolbarChangeViewModel.updateCurrentFragment("reminder_list");
                     } else {
                         toolbarChangeViewModel.updateCurrentFragment("settings");

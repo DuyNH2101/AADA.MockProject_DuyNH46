@@ -25,6 +25,13 @@
         android:theme="@style/Theme.AADAMockProject_DuyNH46"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.login.LoginActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".presentation.login.RegisterActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -36,14 +43,15 @@
         <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true"
-            android:launchMode="singleInstance"/>
+            android:launchMode="singleInstance" />
         <activity
             android:name=".presentation.profile.UserInformationActivity"
             android:exported="true" />
+
         <provider
-            android:authorities="${applicationId}.androidx-startup"
             android:name="androidx.startup.InitializationProvider"
-            tools:node="remove"/>
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
     </application>
 
 </manifest>
